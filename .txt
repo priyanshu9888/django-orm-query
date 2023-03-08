@@ -1,0 +1,61 @@
+Django's ORM (Object-Relational Mapping) provides an easy way to interact with the database using Python. Here are some examples of Django ORM queries:
+
+    Retrieve all objects from a table:
+
+python
+
+from app.models import MyModel
+
+all_objects = MyModel.objects.all()
+
+    Retrieve a single object from a table based on a primary key:
+
+python
+
+from app.models import MyModel
+
+object = MyModel.objects.get(pk=1)
+
+    Retrieve a single object from a table based on a condition:
+
+python
+
+from app.models import MyModel
+
+object = MyModel.objects.get(name='John')
+
+    Retrieve multiple objects from a table based on a condition:
+
+python
+
+from app.models import MyModel
+
+objects = MyModel.objects.filter(name__startswith='J')
+
+    Retrieve objects with related fields:
+
+python
+
+from app.models import MyModel, RelatedModel
+
+objects = MyModel.objects.select_related('related_model')
+
+    Order objects by a field:
+
+python
+
+from app.models import MyModel
+
+objects = MyModel.objects.order_by('name')
+
+    Retrieve objects using a raw SQL query:
+
+python
+
+from django.db import connection
+
+with connection.cursor() as cursor:
+    cursor.execute('SELECT * FROM app_mymodel')
+    objects = cursor.fetchall()
+
+These are just a few examples of the many query options available in Django's ORM. You can find more information in the Django documentation.
